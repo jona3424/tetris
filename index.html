@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="screen" id="start-screen">
+        <h1>Tetris Game</h1>
+        <div class="dropdown">
+            <button class="dropbtn">Select Block Types</button>
+            <div class="dropdown-content">
+                <label>
+                    <input type="checkbox" value="I" checked>
+                    <div class="block-preview">
+                        <div class="cell" style="grid-column: 1 / span 1; grid-row: 1; background-color: #0DC2FF;"></div>
+                        <div class="cell" style="grid-column: 2 / span 1; grid-row: 1; background-color: #0DC2FF;"></div>
+                        <div class="cell" style="grid-column: 3 / span 1; grid-row: 1; background-color: #0DC2FF;"></div>
+                        <div class="cell" style="grid-column: 4 / span 1; grid-row: 1; background-color: #0DC2FF;"></div>
+                    </div>
+                </label>
+                <label>
+                    <input type="checkbox" value="O" checked>
+                    <div class="block-preview">
+                        <div class="cell" style="grid-column: 1 / span 1; grid-row: 1; background-color: #FF0D72;"></div>
+                        <div class="cell" style="grid-column: 2 / span 1; grid-row: 1; background-color: #FF0D72;"></div>
+                        <div class="cell" style="grid-column: 1 / span 1; grid-row: 2; background-color: #FF0D72;"></div>
+                        <div class="cell" style="grid-column: 2 / span 1; grid-row: 2; background-color: #FF0D72;"></div>
+                    </div>
+                </label>
+                <label>
+                    <input type="checkbox" value="T" checked>
+                    <div class="block-preview">
+                        <div class="cell" style="grid-column: 1 / span 1; grid-row: 2; background-color: #F538FF;"></div>
+                        <div class="cell" style="grid-column: 2 / span 1; grid-row: 1; background-color: #F538FF;"></div>
+                        <div class="cell" style="grid-column: 2 / span 1; grid-row: 2; background-color: #F538FF;"></div>
+                        <div class="cell" style="grid-column: 3 / span 1; grid-row: 2; background-color: #F538FF;"></div>
+                    </div>
+                </label>
+                <label>
+                    <input type="checkbox" value="Z" checked>
+                    <div class="block-preview">
+                        <div class="cell" style="grid-column: 1 / span 1; grid-row: 1; background-color: #FF8E0D;"></div>
+                        <div class="cell" style="grid-column: 2 / span 1; grid-row: 1; background-color: #FF8E0D;"></div>
+                        <div class="cell" style="grid-column: 2 / span 1; grid-row: 2; background-color: #FF8E0D;"></div>
+                        <div class="cell" style="grid-column: 3 / span 1; grid-row: 2; background-color: #FF8E0D;"></div>
+                    </div>
+                </label>
+                <label>
+                    <input type="checkbox" value="S" checked>
+                    <div class="block-preview">
+                        <div class="cell" style="grid-column: 2 / span 1; grid-row: 1; background-color: #FFE138;"></div>
+                        <div class="cell" style="grid-column: 3 / span 1; grid-row: 1; background-color: #FFE138;"></div>
+                        <div class="cell" style="grid-column: 1 / span 1; grid-row: 2; background-color: #FFE138;"></div>
+                        <div class="cell" style="grid-column: 2 / span 1; grid-row: 2; background-color: #FFE138;"></div>
+                    </div>
+                </label>
+                <label>
+                    <input type="checkbox" value="J" checked>
+                    <div class="block-preview">
+                        <div class="cell" style="grid-column: 1 / span 1; grid-row: 1; background-color: #3877FF;"></div>
+                        <div class="cell" style="grid-column: 1 / span 1; grid-row: 2; background-color: #3877FF;"></div>
+                        <div class="cell" style="grid-column: 2 / span 1; grid-row: 2; background-color: #3877FF;"></div>
+                        <div class="cell" style="grid-column: 3 / span 1; grid-row: 2; background-color: #3877FF;"></div>
+                    </div>
+                </label>
+                <label>
+                    <input type="checkbox" value="L" checked>
+                    <div class="block-preview">
+                        <div class="cell" style="grid-column: 1 / span 1; grid-row: 2; background-color: #0DFF72;"></div>
+                        <div class="cell" style="grid-column: 2 / span 1; grid-row: 2; background-color: #0DFF72;"></div>
+                        <div class="cell" style="grid-column: 3 / span 1; grid-row: 2; background-color: #0DFF72;"></div>
+                        <div class="cell" style="grid-column: 3 / span 1; grid-row: 1; background-color: #0DFF72;"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <label for="difficulty">Select Difficulty:</label>
+        <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+        <button onclick="showInstructions()">Instructions</button>
+        <button onclick="startGame()">Start Game</button>
+        <button onclick="showHighScores()">High Scores</button>
+    </div>
+
+    <div class="screen" id="instructions-screen" style="display: none;">
+        <h1>Instructions</h1>
+        <p>Use the arrow keys or A S D to move the pieces, and W or the up arrow to rotate.</p>
+        <button onclick="showStartScreen()">Back</button>
+    </div>
+
+    <div class="screen" id="highscores-screen" style="display: none;">
+        <h1>High Scores</h1>
+        <ul id="highscores-list"></ul>
+        <button onclick="showStartScreen()">Back</button>
+    </div>
+
+    <div class="screen" id="game-screen" style="display: none;">
+        <div class="tetris-container">
+            <div class="game-info">
+                <div class="score-container">
+                    <h3>Score</h3>
+                    <div id="score">0</div>
+                </div>
+                <div class="level-container">
+                    <h3>Level</h3>
+                    <div id="level"></div>
+                </div>
+                <div class="lines-container">
+                    <h3>Lines</h3>
+                    <div id="lines">0</div>
+                </div>
+                <div class="next-block-cont">
+                    <h3>Next Block</h3>
+                    <div class="next-block-grid"></div>
+                </div>
+            </div>
+            <div class="tetris-grid"></div>
+        </div>
+        <div class="end-game-options" style="display: none;">
+            <button onclick="startGame()">Play Again</button>
+            <button onclick="showStartScreen()">Home Screen</button>
+            <button onclick="showHighScores()">View High Scores</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #000;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+canvas {
+    background: #111;
+    display: block;
+    margin: 10px 0;
+}
+
+#game-info {
+    text-align: center;
+}
+
+#navigation {
+    margin-top: 20px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #3498db;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content label {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-content label:hover {
+    background-color: #ddd;
+}
+
+.dropdown-content .block-preview {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.dropdown-content .block-preview .cell {
+    width: 10px;
+    height: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.tetris-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ccc;
+    padding: 20px;
+    margin: 0;
+    border-radius: 10px;
+    position: relative;
+}
+
+.game-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.score-container, .level-container, .lines-container {
+    margin-bottom: 20px;
+}
+
+.tetris-grid {
+    width: 200px;
+    height: 400px;
+    background-color: #eaeaea;
+    position: relative;
+    display: grid;
+    grid-template-rows: repeat(20, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+}
+
+.tetris-grid div {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+
+.block {
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    display: none;
+}
+
+#start-screen, #instructions-screen, #highscores-screen, #game-screen {
+    display: none;
+}
+
+#start-screen.active, #instructions-screen.active, #highscores-screen.active, #game-screen.active {
+    display: flex;
+}
+
+#start-screen button, #instructions-screen button, #highscores-screen button, .end-game-options button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#block-types, #difficulty {
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 16px;
+}
+
+#highscores-list {
+    list-style: none;
+    padding: 0;
+}
+
+#highscores-list li {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.end-game-options {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.next-block-grid {
+    width: 80px;
+    height: 80px;
+    background-color: #eaeaea;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 10px;
+    position: relative;
+}
+
+.next-block-grid .block {
+    width: 100%;
+    height: 100%;
+  
+}
